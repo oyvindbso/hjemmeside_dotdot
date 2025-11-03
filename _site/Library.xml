@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Solheim</title>
+    <link>https://www.oyvindsolheim.com</link>
+    <atom:link href="https://www.oyvindsolheim.com/Library.xml" rel="self" type="application/rss+xml"/>
+    <description>Øyvind Bugge Solheim
+</description>
+    <image>
+      <title>Solheim</title>
+      <url>https://www.oyvindsolheim.com/images/icon.png</url>
+      <link>https://www.oyvindsolheim.com</link>
+    </image>
+    <generator>Distill</generator>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Evaluating Model Performance: Recall, Precision, F1 Score, and Kappa using Tidyverse</title>
+      <dc:creator>Øyvind Bugge Solheim</dc:creator>
+      <dc:creator>ChatGPT (Ghost Writer)</dc:creator>
+      <link>https://www.oyvindsolheim.com/library/Evaluating model performance</link>
+      <description>This post discusses various metrics for evaluating model performance in R, including recall, precision, F1 score, and kappa statistics, using tidyverse and pipes with a unified dataset approach.. Additionally, we highlight the importance of correctly specifying factor levels to ensure valid metric calculations..</description>
+      <category>model evaluation</category>
+      <category>recall</category>
+      <category>precision</category>
+      <category>F1 score</category>
+      <category>kappa</category>
+      <category>factor levels</category>
+      <guid>https://www.oyvindsolheim.com/library/Evaluating model performance</guid>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Adding Text to ggplots with Lines and Scatterplots</title>
+      <dc:creator>Øyvind Bugge Solheim</dc:creator>
+      <dc:creator>ChatGPT (Ghost Writer)</dc:creator>
+      <link>https://www.oyvindsolheim.com/library/Adding_text_ggplot2</link>
+      <description>This post explains how to add text annotations to ggplots with lines and scatterplots using ggplot2 in R..</description>
+      <category>ggplot2</category>
+      <category>data visualization</category>
+      <category>text annotation</category>
+      <category>dot-dot</category>
+      <category>LLM-written</category>
+      <guid>https://www.oyvindsolheim.com/library/Adding_text_ggplot2</guid>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Handling Norwegian Characters (æ, ø, å) in R</title>
+      <dc:creator>Øyvind Bugge Solheim</dc:creator>
+      <dc:creator>ChatGPT (Ghost Writer)</dc:creator>
+      <link>https://www.oyvindsolheim.com/library/Norwegian characters</link>
+      <description>This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly..</description>
+      <category>locale</category>
+      <category>encoding</category>
+      <category>internationalization</category>
+      <category>R programming</category>
+      <guid>https://www.oyvindsolheim.com/library/Norwegian characters</guid>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

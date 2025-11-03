@@ -1,4 +1,4 @@
-name: "website distill"
+name: "DotDot"
 title: "Solheim"
 description: |
   Øyvind Bugge Solheim
@@ -22,12 +22,6 @@ navbar:
     - icon: fab fa-mastodon
       href: https://nerdculture.de/@oyvindbs
 collections:
-  posts:
-    share: [linkedin, mastodon]
-  publications:
-    share: [linkedin, mastodon]
-  Code:
-    share: [linkedin, mastodon]
   Library:
     share: [linkedin, mastodon]
 output: 
