@@ -1,0 +1,133 @@
+---
+title: "Evaluating Model Performance: Recall, Precision, F1 Score, and Kappa using Tidyverse"
+description: |
+  This post discusses various metrics for evaluating model performance in R, including recall, precision, F1 score, and kappa statistics, using tidyverse and pipes with a unified dataset approach.. Additionally, we highlight the importance of correctly specifying factor levels to ensure valid metric calculations..
+author:
+- name: Øyvind Bugge Solheim
+  url: https://www.oyvindsolheim.com
+  affiliation: Institutt for samfunnsforskning (ISF)
+  affiliation_url: https://www.samfunnsforskning.no
+  orcid_id: 0000-0002-0871-5233
+- name: ChatGPT (Ghost Writer)
+output: distill::distill_article
+categories:
+  - model evaluation
+  - recall
+  - precision
+  - F1 score
+  - kappa
+  - factor levels
+date: "2025-04-01"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+echo = TRUE,
+warning = FALSE,
+message = FALSE,
+comment = NA
+)
+```
+
+> Disclaimer: This post is written by an AI language model based on R code provided by the author. The purpose is to document and explain R techniques for personal reference.
+
+## Introduction
+Evaluating model performance is crucial for understanding how well your machine learning models are working.. In this post, we'll explore different metrics, including recall, precision, F1 score, and kappa statistics, which can help assess the accuracy and reliability of your models.. We'll simplify the implementation using the tidyverse package and pipes, assuming you have a dataset named prediction for predicted values and correct for actual values with matching variable names..
+Additionally, we emphasize the importance of correctly specifying factor levels when working with binary classification data.. Incorrect level ordering can lead to invalid or misleading metric calculations, which we will demonstrate and address..
+
+
+
+## Step-by-Step Guide
+### 1. Load Required Libraries
+
+We'll use the pacman package to load irr, caret, and tidyverse for calculating metrics and managing data efficiently..
+
+```{r}
+pacman::p_load("irr", "caret", "tidyverse", "gt")
+```
+
+
+### 2. Create Example Datasets
+We'll create example datasets prediction and correct to demonstrate the evaluation process.. These datasets will have matching variable names and contain binary classification data..
+Important Note: The factor levels must be correctly specified, with 1 representing the positive class and 0 the negative class.. If the levels are reversed (e.g., levels = 0:1), the metrics will be computed incorrectly..
+
+```{r}
+set.seed(123)
+# Create example datasets
+prediction <- tibble(
+Formål_1 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_2 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_3 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_4 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_5 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_2 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_3 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_4 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_5 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_6 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0))
+)
+correct <- tibble(
+Formål_1 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_2 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_3 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_4 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Formål_5 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_2 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_3 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_4 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_5 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0)),
+Avsender_6 = factor(sample(c(0, 1), 100, replace = TRUE), levels = c(1, 0))
+)
+
+```
+
+
+### 3. The Impact of Incorrect Factor Levels
+When factor levels are specified incorrectly (e.g., levels = 0:1), the positive and negative classes are reversed.. This can lead to incorrect metric calculations, as the model will treat the negative class as the positive class.. For instance:
+
+```{r}
+incorrect_prediction <- factor(sample(c(0, 1), 100, replace = TRUE), levels = c(0, 1))
+incorrect_reference <- factor(sample(c(0, 1), 100, replace = TRUE), levels = c(0, 1))
+# Incorrect calculation
+recall(data = incorrect_prediction, reference = incorrect_reference)
+```
+
+
+### 4. Calculate Performance Metrics
+
+```{r}
+compute_metrics <- function(variable_name, prediction_data, correct_data) {
+tibble(
+Variabel = variable_name,
+rec = recall(data = prediction_data[[variable_name]], reference = correct_data[[variable_name]]),
+F1 = F_meas(data = prediction_data[[variable_name]], reference = correct_data[[variable_name]]),
+prec = precision(data = prediction_data[[variable_name]], reference = correct_data[[variable_name]])
+)
+}
+variables <- colnames(prediction)
+results <- map_df(variables, ~ compute_metrics(.x, prediction, correct))
+```
+
+
+### 5. Calculate Kappa and Agreement
+
+```{r}
+compute_kappa_agreement <- function(variable_name, prediction_data, correct_data) {
+tibble(
+Variabel = variable_name,
+Kappa = kappa2(cbind(prediction_data[[variable_name]], correct_data[[variable_name]]))$value,
+Agreement = agree(cbind(prediction_data[[variable_name]], correct_data[[variable_name]]))$value
+)
+}
+kappa_agreement_results <- map_df(variables, ~ compute_kappa_agreement(.x, prediction, correct))
+```
+
+
+### 6. Combine Results
+
+```{r}
+final_results <- results %>%
+left_join(kappa_agreement_results, by = "Variabel")
+gt(final_results) %>% fmt_number(2:5)
+```
+

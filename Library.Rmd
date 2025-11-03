@@ -1,0 +1,9 @@
+---
+title: "The dot-dot library"
+site: distill::distill_website
+listing: library
+---
+
+>## Disclaimer
+>
+>These posts are written by chatGPT based on a prompt where I have given it some code and asked it to explain a certain part of the code. Hopefully this will help me remember how to do stuff. While the other posts about R found [here](../code) are written by me, this is only a library of code I have used and maybe want to reuse sometime. (Of course it may be useful for other people as well, but that's not the main goal.) 

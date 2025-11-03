@@ -1,0 +1,156 @@
+---
+title: "Adding Text to ggplots with Lines and Scatterplots"
+description: |
+  This post explains how to add text annotations to ggplots with lines and scatterplots using ggplot2 in R..
+author:
+  - name: Øyvind Bugge Solheim
+    url: https://www.oyvindsolheim.com
+    affiliation: Institutt for samfunnsforskning (ISF)
+    affiliation_url: https://www.samfunnsforskning.no
+    orcid_id: 0000-0002-0871-5233
+  - name: ChatGPT (Ghost Writer)
+output: distill::distill_article
+categories: 
+  - ggplot2
+  - data visualization
+  - text annotation
+  - dot-dot
+  - LLM-written
+date: "2024-12-20"
+---
+
+> *Disclaimer: This post is written by an AI language model based on R code provided by the author. The purpose is to document and explain R techniques for personal reference.*
+
+## **Introduction**  
+Adding text annotations to plots can greatly enhance their interpretability by providing context and highlighting key data points..^[This post uses the double dot ".." to indicate that the text is written by AI. [See this blogpost for more.](https://medium.com/@magnus.nome/the-case-for-the-ai-double-dot-78dad3e06132)] In this post, we’ll learn how to add text to scatterplots with lines using the `ggplot2` package in R..
+
+## Create a simple plot:
+
+1. **Load the Required Library and Data:**  
+   Use the `library(ggplot2)` function to load the `ggplot2` package.. We assume `valg_NY` and `alle_partier_23` are already loaded in your environment..
+
+2. **Create a Basic Scatterplot:**  
+   Use `geom_point()` to create a scatterplot of `H_21` vs.. `H_K23`..
+
+3. **Add Lines to the Plot:**  
+   - `geom_abline()` to add a line with a specified intercept and slope..
+   - `geom_abline()` to add a stability line with intercept 0 and slope 1..
+
+4. **Customize the Plot:**  
+   - Use `labs()` to add axis labels..
+   - `theme_minimal()` for a clean theme..
+   - `xlim()` and `ylim()` to set axis limits..
+
+
+
+```{r}
+# Example data
+valg_NY <- data.frame(
+  H_21 = runif(100, 0, 52),
+  H_K23 = runif(100, 0, 52),
+  Kommune = paste("Kommune", 1:100)
+)
+
+# Example regression coefficients for demonstration purposes
+alle_partier_23 <- list(H = list(reg = list(coefficients = c(10, 0.5))))
+
+# Indices for maximum and minimum values for annotation (dummy indices)
+res_max_h <- which.max(valg_NY$H_21)
+res_min_h <- which.min(valg_NY$H_21)
+library(ggplot2)
+
+# Create scatterplot with text annotations
+plottet<-ggplot(valg_NY, aes(x = H_21, y = H_K23)) + 
+  geom_point() +  # Scatterplot
+  geom_abline(intercept = alle_partier_23$H$reg$coefficients[1], 
+              slope = alle_partier_23$H$reg$coefficients[2], 
+              color = "#0065F1", 
+              linewidth = 0.8) +  # Rikstendenslinjen
+  geom_abline(intercept = 0, 
+              slope = 1, 
+              linewidth = 0.8) +  # Stabilitetslinjen
+  # Annotate min H
+  labs(x = "Prosent, stortingsvalget 2021", 
+       y = "Prosent, kommunestyrevalget 2023") +  # Axis labels
+  theme_minimal() +  # Minimal theme
+  xlim(0, 52) +  # X-axis limits
+  ylim(0, 52);plottet  # Y-axis limits and print the plot
+
+```
+
+## How to add text annotations to the plot:
+
+
+5. **Add Text Annotations:**  
+   - We can use `geom_text()`and `annotate()` to label specific points on the plot..
+   - While `geom_text()` use `data=`, `annotate()` only needs you to specify `x=` and `y=`
+   - For both we specify the text we want to add to the plot as `label=` and we can select a `color=`, here the color of the Norwegian conservative party Høyre..
+   - To make the "Stabilitetslinjen"-label to be the same angle as the line I forced the figure to be a certain ratio and set the angle to 45 (which is the angle of the line)..
+   
+   
+```{r, fig.width=5,fig.height=5}
+
+plottet+
+  geom_text(label = "Rikstendenslinjen", 
+            color = "#0065F1", 
+            data = data.frame(H_21 = 36, H_K23 = 20)) +  # Label for Rikstendenslinjen
+  geom_text(label = "Stabilitetslinjen", 
+            data = data.frame(H_21 = 36, H_K23 = 40), 
+            angle = 45) +  # Label for Stabilitetslinjen
+  annotate("text", 
+           x = valg_NY[res_max_h, "H_21"], 
+           y = valg_NY[res_max_h, "H_K23"] + 2, 
+           label = gsub(" -.*$", "", valg_NY[res_max_h, "Kommune"])) +  # Annotate max H
+  annotate("text", 
+           x = valg_NY[res_min_h, "H_21"] + 4, 
+           y = valg_NY[res_min_h, "H_K23"], 
+           label = gsub(" -.*$", "", valg_NY[res_min_h, "Kommune"])) +
+  xlim(0, 52) +  # X-axis limits
+  ylim(0, 52)
+```
+
+
+## **Additional Notes**  
+
+- Use `geom_text_repel()` from the `ggrepel` package for better text positioning to avoid overlaps.. Here’s an example of how to use it:
+
+```{r}
+  library(ggrepel)
+
+  ggplot(valg_NY, aes(x = H_21, y = H_K23)) + 
+    geom_point() +  # Scatterplot
+    geom_abline(intercept = alle_partier_23$H$reg$coefficients[1], 
+                slope = alle_partier_23$H$reg$coefficients[2], 
+                color = "#0065F1", 
+                linewidth = 0.8) +  # Rikstendenslinjen
+    geom_abline(intercept = 0, 
+                slope = 1, 
+                linewidth = 0.8) +  # Stabilitetslinjen
+    geom_text_repel(label = "Rikstendenslinjen", 
+                    color = "#0065F1", 
+                    data = data.frame(H_21 = 36, H_K23 = 20)) +  # Label for Rikstendenslinjen
+    geom_text_repel(label = "Stabilitetslinjen", 
+                    data = data.frame(H_21 = 46, H_K23 = 40), 
+                    angle = 4) +  # Label for Stabilitetslinjen
+    annotate("text", 
+             x = valg_NY[res_max_h, "H_21"], 
+             y = valg_NY[res_max_h, "H_K23"] + 2, 
+             label = gsub(" -.*$", "", valg_NY[res_max_h, "Kommune"])) +  # Annotate max H
+    annotate("text", 
+             x = valg_NY[res_min_h, "H_21"] + 4, 
+             y = valg_NY[res_min_h, "H_K23"], 
+             label = gsub(" -.*$", "", valg_NY[res_min_h, "Kommune"])) +  # Annotate min H
+    labs(x = "Prosent, stortingsvalget 2021", 
+         y = "Prosent, kommunestyrevalget 2023") +  # Axis labels
+    theme_minimal() +  # Minimal theme
+    xlim(0, 52) +  # X-axis limits
+    ylim(0, 52)  # Y-axis limits
+```
+
+- Adjust the position of the text labels with the `hjust` and `vjust` arguments in `geom_text()` for finer control..
+
+- You can also use `annotate("text", ...)` for more complex or customized text annotations that require specific positioning or formatting outside the scope of the data aesthetics..
+
+## **Conclusion**  
+Adding text annotations to ggplots in R can significantly enhance the readability and informativeness of your visualizations.. By using `geom_text`, `annotate`, and `geom_text_repel`, you can effectively label key points and lines, providing important context and insights for your audience.. Customize the text position, color, and angle to suit your needs and make your plots more engaging and informative..
+

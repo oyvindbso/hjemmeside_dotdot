@@ -1,0 +1,38 @@
+name: "website distill"
+title: "Solheim"
+description: |
+  Øyvind Bugge Solheim
+base_url: https://www.oyvindsolheim.com
+google_analytics: "UA-168441952-1"
+output_dir: "_site"
+favicon: images/icon.png
+navbar:
+  logo: images/icon2.png
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Main home page"
+      href: http://www.oyvindsolheim.com
+    - text: "Library"
+      href: Library.html 
+    # - text: "Code library"
+    #   href: Library.html 
+    # - text: "About"
+    #   href: about.html
+    - icon: fab fa-mastodon
+      href: https://nerdculture.de/@oyvindbs
+collections:
+  posts:
+    share: [linkedin, mastodon]
+  publications:
+    share: [linkedin, mastodon]
+  Code:
+    share: [linkedin, mastodon]
+  Library:
+    share: [linkedin, mastodon]
+output: 
+  distill::distill_article:
+    includes:
+      in_header:
+      - header.html
+

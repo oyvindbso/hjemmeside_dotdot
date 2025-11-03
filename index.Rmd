@@ -1,0 +1,70 @@
+---
+title: "Øyvind Bugge Solheim"
+image: "avatar.jpg"
+site: distill::distill_website
+links: 
+  - label: '<i class="fa fa-envelope fa-2x"></i>'
+    url: "mailto:o.b.solheim@samfunnsforskning.no"
+  - label: ' <i class="ai ai-orcid ai-2x"></i>'
+    url: "https://orcid.org/0000-0002-0871-5233"
+  - label: '<i class="ai ai-google-scholar ai-2x"></i>'
+    url: "https://scholar.google.co.uk/citations?user=_gJeKgcAAAAJ"
+  - label: '<i class="ai ai-researchgate ai-2x"></i>'
+    url: "https://www.researchgate.net/profile/Oyvind_Solheim"
+  - label: '<i class="ai ai-academia ai-2x"></i>'
+    url: "https://uio.academia.edu/Solheim"
+  - label: '<i class="fa fa-github fa-2x"></i>'
+    url: "https://github.com/oyvindbso"  
+  - label: '🤗'
+    url: "https://huggingface.co/oyvindbs"  
+    
+  # - label: '<i class="fab fa-twitter fa-2x"></i>'
+  #   url: "https://twitter.com/oyvindbs"
+
+    
+# work:
+#   title: "Senior Research Fellow "
+#   url: "https://www.samfunnsforskning.no"
+#   name: "Institute for Social Research (ISF)"
+  
+output:
+  postcards::trestles:
+    includes:
+      in_header: header.html
+---
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE,include=FALSE}
+#.libPaths( c( "C:/Users/oyvinbso/Packages" , .libPaths() ) )
+
+# install.packages("yaml")
+#  remotes::install_github(repo = "https://github.com/oyvindbso/postcards_icon",force=TRUE) 
+# fas fa-envelope big-icon
+# fab fa-twitter big-icon
+# fab fa-orcid big-icon
+# 
+# 
+# ai ai-osf big-icon
+# href="https://osf.io/ygpmn"
+# 
+# ai ai-google-scholar big-icon
+# href="https://scholar.google.co.uk/citations?user=_gJeKgcAAAAJ"
+# 
+# ai ai-academia big-icon
+# https://uio.academia.edu/Solheim
+# 
+# ai ai-researchgate big-icon
+# https://www.researchgate.net/profile/Oyvind_Solheim"
+
+xaringanExtra::use_panelset()
+rmarkdown::html_dependency_font_awesome()
+
+
+```
+
+My main homepage is found [here](https://www.oyvindsolheim.com). This page is only used for my library of [LLM-written descriptions of my own code](Library). I used to include it on my main site but Google found it and demoted the whole web-page. Accordingly, I moved it to a separate domain. 
+
+I am a Senior Research Fellow at [The Institute for Social Research (ISF)](https://samfunnsforskning.no) and the [Centre for Research on Civil Society and Voluntary Sector](https://www.samfunnsforskning.no/sivilsamfunn/english/). My research interests concern the the far right, social media, terrorism, but also the Norwegian civil society. I study Scandinavian right-wing extremism on social media as part of the [FREXO-project](projects/FREXO). In addition, I was part of the research group at the Norwegian Holocaust Center studying [antisemitism and islamophobia in Norway](https://www.hlsenteret.no/forskning/jodisk-historie-og-antisemittisme/holdningsundersokelsene/holdningsundersokelse%202022-om-etniske-og-religiose-mino/). In my [PhD](publications/PhD) I studied how terrorist attacks affect attitudes towards immigration and immigrants. I have also worked for the secretary to [valglovutvalget](https://valglovutvalget.no), the Norwegian Election Act Commission, which presented its report ([NOU:2020: 6 Frie og hemmelige valg --- Ny valglov](https://www.regjeringen.no/no/dokumenter/nou-2020-6/id2703131/)) on May 27, 2020.
+
+
+
+
