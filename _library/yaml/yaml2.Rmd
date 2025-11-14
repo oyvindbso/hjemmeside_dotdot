@@ -1,0 +1,47 @@
+---
+title: "Forstå YAML-headeren i en Quarto-fil"
+description: \|
+ Dette blogginnlegget forklarer hvordan du konfigurerer en  YAML-header for en Quarto-fil som genererer en rapport i Word-format  basert på spesifikasjonene i YAML..
+
+author:
+  - name: Øyvind Bugge Solheim
+    affiliation: Institutt for samfunnsforskning (ISF)
+    affiliation_url: <https://www.samfunnsforskning.no>
+    orcid_id: 0000-0002-0871-5233
+  - name: ChatGPT (Ghost Writer)
+
+output: distill::distill_article 
+categories:
+ - YAML
+ - Quarto
+ - dokumentasjon
+ - dot-dot
+ - LLM-written
+
+date: "2025-11-20" 
+---
+
+# Introduksjon
+
+##En YAML-header i Quarto definerer innstillingene som styrer hvordan dokumentet ditt blir formatert og eksportert.. Her ser vi på en konkret YAML-header for en rapport som heter "Frivillighet i Oslo".. Vi forklarer hva hver linje i headeren gjør og hvordan den påvirker det endelige dokumentet..
+Forklaring av YAML-headeren
+
+##yaml ##--- ##title: "Frivillighet i Oslo" ## ##Dette er tittelen på dokumentet.. Tittelen vil vises som hovedoverskrift i rapporten..
+
+##yaml ##format: ##docx: ##toc: FALSE ##reference-doc: rapportmal-a4.docx ## ##- format: angir eksportformatet.. Her genereres dokumentet som en Word-fil (docx).. ##- toc: FALSE betyr at innholdsfortegnelse (table of contents) ikke inkluderes i det endelige dokumentet.. ##- reference-doc: rapportmal-a4.docx refererer til en egen Word-mal som brukes for å tilpasse utseendet og formatet til rapporten..
+
+##yaml ##author: Øyvind Bugge Solheim ## ##Dette angir forfatteren av dokumentet.. Navnet vil typisk vises i metadata eller som en del av tittelbladet..
+
+##yaml ##crossref: ##fig-title: Figur # (default is "Figure") ##tbl-title: Tabell # (default is "Table") false ##fig-prefix: figur # (default is "Figure") ##tbl-prefix: tabell # (default is "Table") ##ref-hyperlink: false # (default is true) ## ##- crossref: konfigurerer hvordan figurer og tabeller refereres til i dokumentet.. ##- fig-title: angir prefikset som brukes for figur-titler.. Her brukes "Figur #" i stedet for standard "Figure".. ##- tbl-title: angir prefikset for tabell-titler som "Tabell #".. ##- fig-prefix: og tbl-prefix: definerer etikettene for figurer og tabeller.. ##- ref-hyperlink: false betyr at kryssreferanser ikke blir hyperkoblinger i det endelige dokumentet..
+
+##yaml ##lang: nb ## ##Angir språket for dokumentet.. Her er det satt til norsk bokmål (nb).. Dette kan påvirke formatet på datoer, tall og andre språkspesifikke elementer..
+
+##yaml ##fig-width: 8 ## ##Setter standard bredde (i tommer) for figurer i dokumentet..
+
+##yaml ##documentclass: article ##classoption: a4paper ##papersize: a4 ## ##- documentclass: angir typen dokument som skal genereres.. Her er det satt til "article", som er vanlig for rapporter og artikler.. ##- classoption: a4paper og papersize: a4 sikrer at dokumentet får A4-format..
+
+##yaml ##toc-title: Innholdsfortegnelse ## ##Gir innholdsfortegnelsen en egendefinert tittel hvis denne inkluderes (selv om toc: FALSE er spesifisert, kan denne linjen brukes hvis du senere vil aktivere en innholdsfortegnelse)..
+
+##yaml ##tbl-cap-location: bottom ## ##Spesifiserer plasseringen av tabelloverskrifter.. Her plasseres overskriften under tabellen..
+
+##yaml ##editor: visual ## ##Definerer at den visuelle editoren i Quarto skal brukes.. Dette gir en mer brukervennlig måte å redigere dokumentet på..

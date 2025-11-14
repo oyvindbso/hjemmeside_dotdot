@@ -79,5 +79,32 @@
     "preview": {},
     "last_modified": "2025-10-20T11:59:21+02:00",
     "input_file": {}
+  },
+  {
+    "path": "library/yaml/",
+    "title": "Forstå YAML-headeren i et Quarto- eller Rmarkdown-dokument",
+    "description": "En gjennomgang av YAML-headeren brukt i et Quarto eller RMarkdown-dokument, med fokus på tilpasninger for norsk språk og spesifikke formatteringskrav..",
+    "author": [
+      {
+        "name": "Øyvind Bugge Solheim",
+        "url": "https://www.oyvindsolheim.com"
+      },
+      {
+        "name": "ChatGPT (Ghost Writer)",
+        "url": {}
+      }
+    ],
+    "date": "2024-12-20",
+    "categories": [
+      "YAML",
+      "RMarkdown",
+      "dokumentformatering",
+      "norsk språk",
+      "LLM-written"
+    ],
+    "contents": "\r\n\r\nDisclaimer: Denne bloggposten er skrevet av en AI-språkmodell basert på YAML-headeren levert av forfatteren.. Formålet er å forklare innstillinger og tilpasninger i RMarkdown-dokumenter for bruk i fremtidige prosjekter.\r\n\r\nIntroduksjon\r\nNår du jobber med RMarkdown-dokumenter, er YAML-headeren en viktig del av dokumentets struktur og funksjonalitet.. YAML (YAML Ain’t Markup Language) brukes til å spesifisere metadata og tilpasninger som påvirker utformingen og innholdet i det ferdige dokumentet.. I denne posten skal vi analysere en YAML-header som brukes for å lage en rapport med spesifikke innstillinger for norsk språk og A4-format.. YAML-headeren inneholder koder som setter norske titler på tabeller og figurer i det endelige dokumentet.\r\nFullstendig YAML\r\n\r\n---\r\ntitle: \"Rapporten\"\r\nformat: \r\n  docx:\r\n    toc: FALSE\r\n    reference-doc: rapportmal.docx\r\nauthor: Øyvind Bugge Solheim\r\ncrossref:\r\n  fig-title: Figur     # (default is \"Figure\")\r\n  tbl-title: Tabell     # (default is \"Table\") false\r\n  fig-prefix: figur   # (default is \"Figure\")\r\n  tbl-prefix: tabell    # (default is \"Table\")\r\n  ref-hyperlink: false # (default is true)\r\nlang: nb\r\nfig-width: 8\r\ndocumentclass: article\r\nclassoption: a4paper\r\npapersize: a4\r\ntoc-title: Innholdsfortegnelse\r\ntbl-cap-location: bottom\r\neditor: visual\r\nbibliography: references.bib\r\n---\r\n\r\nForklaring av YAML-headeren\r\nHer er en linje-for-linje forklaring av YAML-headeren..\r\n\r\nauthor: Øyvind Bugge Solheim \r\n\r\nauthor:Navnet på forfatteren av dokumentet.. Dette legges ofte til i metadata eller i dokumentets header..\r\n\r\n\r\ntitle: \"Rapporten\" \r\n\r\n\r\ntitle: Dokumentets tittel.. Denne vises øverst i dokumentet og gir leseren en klar idé om temaet..\r\n\r\n\r\nformat: \r\n docx: \r\n toc: FALSE \r\n reference-doc: rapportmal.docx \r\n\r\n\r\nformat:Angir utdataformatet.. Her er formatet satt til Word-dokument (docx)..\r\ntoc: Om innholdsfortegnelsen skal inkluderes.. Her er det satt til FALSE, så ingen innholdsfortegnelse genereres automatisk..\r\nreference-doc: Referansedokumentet for Word-malen.. Denne malen ligger (rapportmal.docx) definerer layout og stil..\r\n\r\n\r\ncrossref: \r\n fig-title: Figur # (default is \"Figure\") \r\n tbl-title: Tabell # (default is \"Table\") \r\n fig-prefix: figur # (default is \"Figure\") \r\n tbl-prefix: tabell # (default is \"Table\") \r\n ref-hyperlink: false # (default is true) \r\n\r\n\r\ncrossref: Innstillinger for kryssreferanser i dokumentet..\r\nfig-title og tbl-title: Tilpasser titler for figurer og tabeller til norsk (“Figur” og “Tabell”)..\r\nfig-prefix og tbl-prefix: Prefiksene som brukes foran figurer og tabeller..\r\nref-hyperlink: Angir om referanser skal være hyperlenker.. Her er det deaktivert med false..\r\n\r\n\r\nlang: nb \r\n\r\n\r\nlang: Språket for dokumentet.. nb angir norsk bokmål..\r\n\r\n\r\nfig-width: 8 \r\n\r\n\r\nfig-width:Standard bredde for figurer i dokumentet (i tommer)..\r\n\r\n\r\ndocumentclass: article \r\nclassoption: a4paper \r\npapersize: a4 \r\n\r\n\r\ndocumentclass, classoption ogpapersize: Disse innstillingene konfigurerer dokumentets utforming for A4-format.. Dette er viktig for å sikre at dokumentet oppfyller standardiserte krav..\r\n\r\n\r\ntoc-title: Innholdsfortegnelse \r\n\r\n\r\ntoc-title: Tilpasser tittelen på innholdsfortegnelsen til norsk (“Innholdsfortegnelse”)..\r\n\r\n\r\ntbl-cap-location: bottom \r\n\r\n\r\ntbl-cap-location: Plasseringen av tabelloverskrifter.. Her er de plassert under tabellene..\r\n\r\n\r\nbibliography: references.bib \r\n\r\n\r\nbibliography: Angir filen som inneholder bibliografidata.. Her brukes en BiblaTeX-fil (references.bib) til å generere referanser..\r\nKonklusjon\r\nDenne YAML-headeren viser hvordan man kan tilpasse et quarto-dokument for å møte spesifikke behov, som språk, format og layout.. Den er spesielt nyttig for å lage profesjonelle rapporter på norsk, tilpasset standard A4-format og med en mal for Word-dokumenter.. YAML er et kraftig verktøy som lar brukere kontrollere mange aspekter ved dokumentutformingen på en enkel og strukturert måte..\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2025-11-14T14:17:16+01:00",
+    "input_file": "yaml.knit.md"
   }
 ]

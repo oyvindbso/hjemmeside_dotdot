@@ -55,5 +55,19 @@
       <guid>https://www.oyvindsolheim.com/library/Norwegian characters</guid>
       <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
     </item>
+    <item>
+      <title>Forstå YAML-headeren i et Quarto- eller Rmarkdown-dokument</title>
+      <dc:creator>Øyvind Bugge Solheim</dc:creator>
+      <dc:creator>ChatGPT (Ghost Writer)</dc:creator>
+      <link>https://www.oyvindsolheim.com/library/yaml</link>
+      <description>En gjennomgang av YAML-headeren brukt i et Quarto eller RMarkdown-dokument, med fokus på tilpasninger for norsk språk og spesifikke formatteringskrav..</description>
+      <category>YAML</category>
+      <category>RMarkdown</category>
+      <category>dokumentformatering</category>
+      <category>norsk språk</category>
+      <category>LLM-written</category>
+      <guid>https://www.oyvindsolheim.com/library/yaml</guid>
+      <pubDate>Thu, 19 Dec 2024 00:00:00 +0000</pubDate>
+    </item>
   </channel>
 </rss>
