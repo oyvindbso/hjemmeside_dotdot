@@ -55,32 +55,6 @@
     "input_file": {}
   },
   {
-    "path": "library/Norwegian characters/",
-    "title": "Handling Norwegian Characters (æ, ø, å) in R",
-    "description": "This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly..",
-    "author": [
-      {
-        "name": "Øyvind Bugge Solheim",
-        "url": "https://www.oyvindsolheim.com"
-      },
-      {
-        "name": "ChatGPT (Ghost Writer)",
-        "url": {}
-      }
-    ],
-    "date": "2024-12-20",
-    "categories": [
-      "locale",
-      "encoding",
-      "internationalization",
-      "R programming"
-    ],
-    "contents": "\r\n\r\nDisclaimer: This post is written by an AI language model based on R code provided by the author. The purpose is to document and explain R techniques for personal reference.\r\n\r\nIntroduction\r\nWhen working with text data in R, especially with non-English characters such as the Norwegian letters æ, ø, and å, you may encounter issues with character encoding.. This post explains why it is necessary to set the locale in R to handle these characters properly and how to do so..\r\nStep-by-Step Guide\r\nUnderstanding Locales:\r\nIn computing, a locale is a set of parameters that defines the user’s language, country, and any special variant preferences.. These parameters can affect the way text is displayed and processed, including date and time formatting, number formatting, and, importantly, character encoding..\r\nCommon Issues with Norwegian Characters:\r\nWithout the correct locale settings, Norwegian characters like æ, ø, and å might not be displayed correctly.. They could appear as garbled text or question marks, making it difficult to work with Norwegian text data..\r\nSetting the Locale in R:\r\nTo handle Norwegian characters correctly, you need to set the locale in R using the Sys.setlocale function.. This function allows you to specify the desired locale settings for your R session..\r\nUsing Sys.setlocale Function:\r\nThe Sys.setlocale function takes two arguments: category and locale.. The category argument specifies which aspect of the locale to set (e.g., all locale settings, time, monetary, etc.), and the locale argument specifies the locale to use.. Setting category to \"LC_ALL\" ensures that all aspects of the locale are set, and leaving locale as an empty string (\"\") sets it to the system’s default locale..\r\n\r\n\r\n# Example text with Norwegian characters\r\nnorwegian_text <- \"æ, ø, å\"\r\n\r\n# test Print the text\r\nprint(norwegian_text)\r\n\r\n[1] \"æ, ø, å\"\r\n\r\n# Set locale to system default to handle Norwegian characters\r\nSys.setlocale(category = \"LC_ALL\", locale = \"\")\r\n\r\n[1] \"LC_COLLATE=Norwegian Bokmål_Norway.utf8;LC_CTYPE=Norwegian Bokmål_Norway.utf8;LC_MONETARY=Norwegian Bokmål_Norway.utf8;LC_NUMERIC=C;LC_TIME=Norwegian Bokmål_Norway.utf8\"\r\n\r\n# Example text with Norwegian characters\r\nnorwegian_text <- \"æ, ø, å\"\r\n\r\n# Print the text to verify correct display\r\nprint(norwegian_text)\r\n\r\n[1] \"æ, ø, å\"\r\n\r\nCode Explanation\r\nSys.setlocale(category = “LC_ALL”, locale = ““):\r\nThis line sets the locale for all categories (e.g., character classification, collation, time, numeric, and monetary) to the system’s default locale.. This is crucial for correctly handling and displaying Norwegian characters..\r\nnorwegian_text <- “æ, ø, å”:\r\nThis line creates a string containing the Norwegian characters æ, ø, and å..\r\nprint(norwegian_text):\r\nThis line prints the text to the console, allowing you to verify that the characters are displayed correctly..\r\nAdditional Notes\r\nIf you are working on a non-Norwegian system, you may need to specify the locale explicitly, such as locale = \"no_NO.UTF-8\" for Norwegian (Norway) with UTF-8 encoding..\r\nBe aware that locale settings can affect other aspects of your R session, such as sorting and date formatting..\r\nConclusion\r\nSetting the locale in R is essential for properly handling Norwegian characters like æ, ø, and å.. By using the Sys.setlocale function, you ensure that these characters are displayed and processed correctly, avoiding issues with character encoding..\r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2025-10-20T11:59:21+02:00",
-    "input_file": {}
-  },
-  {
     "path": "library/yaml/",
     "title": "Forstå YAML-headeren i et Quarto- eller Rmarkdown-dokument",
     "description": "En gjennomgang av YAML-headeren brukt i et Quarto eller RMarkdown-dokument, med fokus på tilpasninger for norsk språk og spesifikke formatteringskrav..",
@@ -106,5 +80,27 @@
     "preview": {},
     "last_modified": "2025-11-14T14:17:16+01:00",
     "input_file": "yaml.knit.md"
+  },
+  {
+    "path": "library/Norwegian characters/",
+    "title": "Handling Norwegian Characters (æ, ø, å) in R",
+    "description": "This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly.",
+    "author": [
+      {
+        "name": "Øyvind Bugge Solheim",
+        "url": "https://www.oyvindsolheim.com"
+      }
+    ],
+    "date": "2024-12-20",
+    "categories": [
+      "locale",
+      "encoding",
+      "internationalization",
+      "R programming"
+    ],
+    "contents": "\r\nIntroduction\r\nThis post was all wrong earlier. So I have rewritten it myself. Since “Bokmål” includes an “å”, the locale was reverted to “C” by Rstudio. To make it work on a computer that has Norwegian Bokmål as the system language you have to specify the type of UTF-8 without the word “bokmål”.1. Thus the correct specification to work if you write in Norwegian is:\r\n\r\n\r\nSys.setlocale(category = \"LC_ALL\", locale = \"NO_NB.utf8\")\r\n\r\n[1] \"LC_COLLATE=NO_NB.utf8;LC_CTYPE=NO_NB.utf8;LC_MONETARY=NO_NB.utf8;LC_NUMERIC=C;LC_TIME=NO_NB.utf8\"\r\n\r\nFor more information in Norwegian see here on my home page.\r\nPut it in the startup of R\r\nTo make it standard you can put it in the r-profile. You open the profile:\r\n\r\n\r\n#install.packages(\"usethis\")\r\n\r\nusethis::edit_r_profile()\r\n\r\n\r\nAnd enter the locale:\r\n\r\n\r\nSys.setlocale(category = \"LC_ALL\", locale = \"NO_NB.utf8\")\r\n\r\n[1] \"LC_COLLATE=NO_NB.utf8;LC_CTYPE=NO_NB.utf8;LC_MONETARY=NO_NB.utf8;LC_NUMERIC=C;LC_TIME=NO_NB.utf8\"\r\n\r\n\r\nI learned this here: https://github.com/rstudio/rstudio/issues/15008↩︎\r\n",
+    "preview": {},
+    "last_modified": "2025-11-19T14:07:35+01:00",
+    "input_file": "Norwegian_characters.knit.md"
   }
 ]

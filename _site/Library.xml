@@ -43,19 +43,6 @@
       <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Handling Norwegian Characters (æ, ø, å) in R</title>
-      <dc:creator>Øyvind Bugge Solheim</dc:creator>
-      <dc:creator>ChatGPT (Ghost Writer)</dc:creator>
-      <link>https://www.oyvindsolheim.com/library/Norwegian characters</link>
-      <description>This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly..</description>
-      <category>locale</category>
-      <category>encoding</category>
-      <category>internationalization</category>
-      <category>R programming</category>
-      <guid>https://www.oyvindsolheim.com/library/Norwegian characters</guid>
-      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
-    </item>
-    <item>
       <title>Forstå YAML-headeren i et Quarto- eller Rmarkdown-dokument</title>
       <dc:creator>Øyvind Bugge Solheim</dc:creator>
       <dc:creator>ChatGPT (Ghost Writer)</dc:creator>
@@ -67,6 +54,18 @@
       <category>norsk språk</category>
       <category>LLM-written</category>
       <guid>https://www.oyvindsolheim.com/library/yaml</guid>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Handling Norwegian Characters (æ, ø, å) in R</title>
+      <dc:creator>Øyvind Bugge Solheim</dc:creator>
+      <link>https://www.oyvindsolheim.com/library/Norwegian characters</link>
+      <description>This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly.</description>
+      <category>locale</category>
+      <category>encoding</category>
+      <category>internationalization</category>
+      <category>R programming</category>
+      <guid>https://www.oyvindsolheim.com/library/Norwegian characters</guid>
       <pubDate>Thu, 19 Dec 2024 00:00:00 +0000</pubDate>
     </item>
   </channel>

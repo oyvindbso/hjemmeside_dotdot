@@ -90,7 +90,7 @@ code span.wa { color: #5e5e5e; font-style: italic; }
   <!--radix_placeholder_meta_tags-->
 <title>Solheim: Handling Norwegian Characters (æ, ø, å) in R</title>
 
-<meta property="description" itemprop="description" content="This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly.."/>
+<meta property="description" itemprop="description" content="This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly."/>
 
 <link rel="canonical" href="https://www.oyvindsolheim.com/library/Norwegian characters/"/>
 <link rel="icon" type="image/png" href="../../images/icon.png"/>
@@ -99,12 +99,11 @@ code span.wa { color: #5e5e5e; font-style: italic; }
 <meta property="article:published" itemprop="datePublished" content="2024-12-20"/>
 <meta property="article:created" itemprop="dateCreated" content="2024-12-20"/>
 <meta name="article:author" content="Øyvind Bugge Solheim"/>
-<meta name="article:author" content="ChatGPT (Ghost Writer)"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
 <meta property="og:title" content="Solheim: Handling Norwegian Characters (æ, ø, å) in R"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly.."/>
+<meta property="og:description" content="This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly."/>
 <meta property="og:url" content="https://www.oyvindsolheim.com/library/Norwegian characters/"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Solheim"/>
@@ -112,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; }
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
 <meta property="twitter:title" content="Solheim: Handling Norwegian Characters (æ, ø, å) in R"/>
-<meta property="twitter:description" content="This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly.."/>
+<meta property="twitter:description" content="This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly."/>
 <meta property="twitter:url" content="https://www.oyvindsolheim.com/library/Norwegian characters/"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
@@ -122,12 +121,11 @@ code span.wa { color: #5e5e5e; font-style: italic; }
 <meta name="citation_publication_date" content="2024/12/20"/>
 <meta name="citation_author" content="Øyvind Bugge Solheim"/>
 <meta name="citation_author_institution" content="Institutt for samfunnsforskning (ISF)"/>
-<meta name="citation_author" content="ChatGPT (Ghost Writer)"/>
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","output","categories","date","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Handling Norwegian Characters (æ, ø, å) in R"]},{"type":"character","attributes":{},"value":["This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly.."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Øyvind Bugge Solheim"]},{"type":"character","attributes":{},"value":["https://www.oyvindsolheim.com"]},{"type":"character","attributes":{},"value":["Institutt for samfunnsforskning (ISF)"]},{"type":"character","attributes":{},"value":["https://www.samfunnsforskning.no"]},{"type":"character","attributes":{},"value":["0000-0002-0871-5233"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["ChatGPT (Ghost Writer)"]}]}]},{"type":"character","attributes":{},"value":["distill::distill_article"]},{"type":"character","attributes":{},"value":["locale","encoding","internationalization","R programming"]},{"type":"character","attributes":{},"value":["2024-12-20"]},{"type":"character","attributes":{},"value":["https://www.oyvindsolheim.com/library/Norwegian characters/"]},{"type":"character","attributes":{},"value":["https://www.oyvindsolheim.com/library/Norwegian characters/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","output","categories","date","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Handling Norwegian Characters (æ, ø, å) in R"]},{"type":"character","attributes":{},"value":["This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Øyvind Bugge Solheim"]},{"type":"character","attributes":{},"value":["https://www.oyvindsolheim.com"]},{"type":"character","attributes":{},"value":["Institutt for samfunnsforskning (ISF)"]},{"type":"character","attributes":{},"value":["https://www.samfunnsforskning.no"]},{"type":"character","attributes":{},"value":["0000-0002-0871-5233"]}]}]},{"type":"character","attributes":{},"value":["distill::distill_article"]},{"type":"character","attributes":{},"value":["locale","encoding","internationalization","R programming"]},{"type":"character","attributes":{},"value":["2024-12-20"]},{"type":"character","attributes":{},"value":["https://www.oyvindsolheim.com/library/Norwegian characters/"]},{"type":"character","attributes":{},"value":["https://www.oyvindsolheim.com/library/Norwegian characters/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -3171,7 +3169,7 @@ gtag('config', 'UA-168441952-1');
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Handling Norwegian Characters (æ, ø, å) in R","description":"This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly..","authors":[{"author":"Øyvind Bugge Solheim","authorURL":"https://www.oyvindsolheim.com","affiliation":"Institutt for samfunnsforskning (ISF)","affiliationURL":"https://www.samfunnsforskning.no","orcidID":"0000-0002-0871-5233"},{"author":"ChatGPT (Ghost Writer)","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2024-12-20T00:00:00.000+01:00","citationText":"Solheim & Writer), 2024"}
+{"title":"Handling Norwegian Characters (æ, ø, å) in R","description":"This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly.","authors":[{"author":"Øyvind Bugge Solheim","authorURL":"https://www.oyvindsolheim.com","affiliation":"Institutt for samfunnsforskning (ISF)","affiliationURL":"https://www.samfunnsforskning.no","orcidID":"0000-0002-0871-5233"}],"publishedDate":"2024-12-20T00:00:00.000+01:00","citationText":"Solheim, 2024"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -3211,74 +3209,48 @@ gtag('config', 'UA-168441952-1');
   <a href="../../Library.html#category:R_programming" class="dt-tag">R programming</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>This post explains why it is necessary to set the locale in R to handle Norwegian characters (æ, ø, å) properly..</p></p>
+<p><p>This post explains how you can set the locale in R to handle Norwegian characters (æ, ø, å) properly.</p></p>
 </div>
 
 <div class="d-byline">
   Øyvind Bugge Solheim <a href="https://www.oyvindsolheim.com" class="uri">https://www.oyvindsolheim.com</a> (Institutt for samfunnsforskning (ISF))<a href="https://www.samfunnsforskning.no" class="uri">https://www.samfunnsforskning.no</a>
   
-,   ChatGPT (Ghost Writer)  
-  
 <br />2024-12-20
 </div>
 
 <div class="d-article">
-<blockquote>
-<p><em>Disclaimer: This post is written by an AI language model based on R code provided by the author. The purpose is to document and explain R techniques for personal reference.</em></p>
-</blockquote>
 <h2 id="introduction"><strong>Introduction</strong></h2>
-<p>When working with text data in R, especially with non-English characters such as the Norwegian letters æ, ø, and å, you may encounter issues with character encoding.. This post explains why it is necessary to set the locale in R to handle these characters properly and how to do so..</p>
-<h2 id="step-by-step-guide"><strong>Step-by-Step Guide</strong></h2>
-<ol type="1">
-<li><p><strong>Understanding Locales:</strong><br />
-In computing, a locale is a set of parameters that defines the user’s language, country, and any special variant preferences.. These parameters can affect the way text is displayed and processed, including date and time formatting, number formatting, and, importantly, character encoding..</p></li>
-<li><p><strong>Common Issues with Norwegian Characters:</strong><br />
-Without the correct locale settings, Norwegian characters like æ, ø, and å might not be displayed correctly.. They could appear as garbled text or question marks, making it difficult to work with Norwegian text data..</p></li>
-<li><p><strong>Setting the Locale in R:</strong><br />
-To handle Norwegian characters correctly, you need to set the locale in R using the <code>Sys.setlocale</code> function.. This function allows you to specify the desired locale settings for your R session..</p></li>
-<li><p><strong>Using <code>Sys.setlocale</code> Function:</strong><br />
-The <code>Sys.setlocale</code> function takes two arguments: <code>category</code> and <code>locale</code>.. The <code>category</code> argument specifies which aspect of the locale to set (e.g., all locale settings, time, monetary, etc.), and the <code>locale</code> argument specifies the locale to use.. Setting <code>category</code> to <code>&quot;LC_ALL&quot;</code> ensures that all aspects of the locale are set, and leaving <code>locale</code> as an empty string (<code>&quot;&quot;</code>) sets it to the system’s default locale..</p></li>
-</ol>
+<p>This post was all wrong earlier. So I have rewritten it myself. Since “Bokmål” includes an “å”, the locale was reverted to “C” by Rstudio. To make it work on a computer that has Norwegian Bokmål as the system language you have to specify the type of UTF-8 without the word “bokmål”.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Thus the correct specification to work if you write in Norwegian is:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class="co"># Example text with Norwegian characters</span></span>
-<span><span class="va">norwegian_text</span> <span class="op">&lt;-</span> <span class="st">&quot;æ, ø, å&quot;</span></span>
-<span></span>
-<span><span class="co"># test Print the text</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">norwegian_text</span><span class="op">)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span>category <span class="op">=</span> <span class="st">&quot;LC_ALL&quot;</span>, locale <span class="op">=</span> <span class="st">&quot;NO_NB.utf8&quot;</span><span class="op">)</span></span></code></pre>
 </div>
-<pre><code>[1] &quot;æ, ø, å&quot;</code></pre>
+<pre><code>[1] &quot;LC_COLLATE=NO_NB.utf8;LC_CTYPE=NO_NB.utf8;LC_MONETARY=NO_NB.utf8;LC_NUMERIC=C;LC_TIME=NO_NB.utf8&quot;</code></pre>
+</div>
+<p>For more information in Norwegian see here on my <a href="https://oyvindsolheim.com/code/norske%20bokstaver/">home page</a>.</p>
+<h1 id="put-it-in-the-startup-of-r">Put it in the startup of R</h1>
+<p>To make it standard you can put it in the r-profile. You open the profile:</p>
+<div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class="co"># Set locale to system default to handle Norwegian characters</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span>category <span class="op">=</span> <span class="st">&quot;LC_ALL&quot;</span>, locale <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">)</span></span></code></pre>
-</div>
-<pre><code>[1] &quot;LC_COLLATE=Norwegian Bokmål_Norway.utf8;LC_CTYPE=Norwegian Bokmål_Norway.utf8;LC_MONETARY=Norwegian Bokmål_Norway.utf8;LC_NUMERIC=C;LC_TIME=Norwegian Bokmål_Norway.utf8&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class="co"># Example text with Norwegian characters</span></span>
-<span><span class="va">norwegian_text</span> <span class="op">&lt;-</span> <span class="st">&quot;æ, ø, å&quot;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class="co">#install.packages(&quot;usethis&quot;)</span></span>
 <span></span>
-<span><span class="co"># Print the text to verify correct display</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">norwegian_text</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_profile</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<pre><code>[1] &quot;æ, ø, å&quot;</code></pre>
 </div>
-<h2 id="code-explanation"><strong>Code Explanation</strong></h2>
-<ul>
-<li><p><strong>Sys.setlocale(category = “LC_ALL”, locale = ““):</strong><br />
-This line sets the locale for all categories (e.g., character classification, collation, time, numeric, and monetary) to the system’s default locale.. This is crucial for correctly handling and displaying Norwegian characters..</p></li>
-<li><p><strong>norwegian_text &lt;- “æ, ø, å”:</strong><br />
-This line creates a string containing the Norwegian characters æ, ø, and å..</p></li>
-<li><p><strong>print(norwegian_text):</strong><br />
-This line prints the text to the console, allowing you to verify that the characters are displayed correctly..</p></li>
-</ul>
-<h2 id="additional-notes"><strong>Additional Notes</strong></h2>
-<ul>
-<li>If you are working on a non-Norwegian system, you may need to specify the locale explicitly, such as <code>locale = &quot;no_NO.UTF-8&quot;</code> for Norwegian (Norway) with UTF-8 encoding..</li>
-<li>Be aware that locale settings can affect other aspects of your R session, such as sorting and date formatting..</li>
-</ul>
-<h2 id="conclusion"><strong>Conclusion</strong></h2>
-<p>Setting the locale in R is essential for properly handling Norwegian characters like æ, ø, and å.. By using the <code>Sys.setlocale</code> function, you ensure that these characters are displayed and processed correctly, avoiding issues with character encoding..</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>And enter the locale:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class="fu"><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale</a></span><span class="op">(</span>category <span class="op">=</span> <span class="st">&quot;LC_ALL&quot;</span>, locale <span class="op">=</span> <span class="st">&quot;NO_NB.utf8&quot;</span><span class="op">)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;LC_COLLATE=NO_NB.utf8;LC_CTYPE=NO_NB.utf8;LC_MONETARY=NO_NB.utf8;LC_NUMERIC=C;LC_TIME=NO_NB.utf8&quot;</code></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>I learned this here: <a href="https://github.com/rstudio/rstudio/issues/15008" class="uri">https://github.com/rstudio/rstudio/issues/15008</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3293,10 +3265,10 @@ This line prints the text to the console, allowing you to verify that the charac
 <div class="appendix-bottom">
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Solheim &amp; Writer) (2024, Dec. 20). Solheim: Handling Norwegian Characters (æ, ø, å) in R. Retrieved from https://www.oyvindsolheim.com/library/Norwegian characters/</pre>
+  <pre class="citation-appendix short">Solheim (2024, Dec. 20). Solheim: Handling Norwegian Characters (æ, ø, å) in R. Retrieved from https://www.oyvindsolheim.com/library/Norwegian characters/</pre>
   <p>BibTeX citation</p>
   <pre class="citation-appendix long">@misc{solheim2024handling,
-  author = {Solheim, Øyvind Bugge and Writer), ChatGPT (Ghost},
+  author = {Solheim, Øyvind Bugge},
   title = {Solheim: Handling Norwegian Characters (æ, ø, å) in R},
   url = {https://www.oyvindsolheim.com/library/Norwegian characters/},
   year = {2024}
