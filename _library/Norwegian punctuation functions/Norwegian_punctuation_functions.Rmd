@@ -1,0 +1,90 @@
+---
+title: "Norwegian Punctuation Wrappers for gt, scales, and ggplot2"
+description: |
+  This post explains a set of small wrapper functions that make gt and scales output follow Norwegian punctuation rules, using commas as decimal separators and spaces before percent signs.
+author:
+  - name: Øyvind Bugge Solheim
+    url: https://www.oyvindsolheim.com
+    affiliation: Institutt for samfunnsforskning (ISF)
+    affiliation_url: https://www.samfunnsforskning.no
+    orcid_id: 0000-0002-0871-5233
+output: distill::distill_article
+categories:
+  - locale
+  - Norwegian
+  - gt
+  - scales
+  - ggplot2
+  - R programming
+date: "2026-02-25"
+---
+
+## Background..
+
+In Norwegian, numbers are written with a comma as the decimal separator and a space before the percent sign.. For example, what English writes as `5.5%` is written as `5,5 %` in Norwegian.. The `gt`, `scales`, and `ggplot2` packages all default to English punctuation conventions, which makes tables and plots look wrong in a Norwegian context.. The three wrapper functions below solve this by setting sensible Norwegian defaults while still passing all other arguments through to the underlying functions..
+
+## The functions..
+
+```{r, eval=FALSE}
+gt_no <- function(., locale = "no", ...) {
+  gt(., locale = locale, ...)
+}
+
+fmt_percent_no <- function(., locale = "no", incl_space = TRUE, ...) {
+  fmt_percent(., locale = locale, incl_space = incl_space, ...)
+}
+
+prosenten <- function(x, accuracy = NULL, scale = 100, prefix = "",
+                      suffix = " %", big.mark = NULL, decimal.mark = NULL,
+                      trim = TRUE, ...) {
+  scales::number(x = x, accuracy = accuracy, scale = scale,
+                 prefix = prefix, suffix = suffix,
+                 big.mark = big.mark, decimal.mark = decimal.mark,
+                 trim = trim, ...)
+}
+```
+
+## `gt_no`..
+
+`gt_no` is a thin wrapper around `gt::gt()`.. Its only job is to change the default value of the `locale` argument from `NULL` to `"no"`.. When `gt` knows the locale is Norwegian it automatically applies Norwegian number formatting rules throughout the table, including comma as the decimal separator.. Because the function uses `...`, every other argument accepted by `gt()` can still be passed in normally..
+
+```{r, eval=FALSE}
+# Instead of writing:
+gt(data, locale = "no")
+
+# You can write:
+gt_no(data)
+```
+
+## `fmt_percent_no`..
+
+`fmt_percent_no` wraps `gt::fmt_percent()`.. It changes two defaults: the locale is set to `"no"` and `incl_space` is set to `TRUE`.. The `incl_space` argument controls whether a space is inserted between the number and the percent sign.. Norwegian style requires this space, so `5.5 %` becomes `5,5 %` when both defaults are applied.. Again, `...` lets you pass any additional formatting arguments straight through to `fmt_percent()`..
+
+```{r, eval=FALSE}
+# Instead of writing:
+gt_no(data) |>
+  fmt_percent(columns = rate, locale = "no", incl_space = TRUE)
+
+# You can write:
+gt_no(data) |>
+  fmt_percent_no(columns = rate)
+```
+
+## `prosenten`..
+
+`prosenten` ("the percent" in Norwegian) is a wrapper around `scales::number()`.. It is designed for use inside `ggplot2` scale functions such as `scale_y_continuous(labels = ...)`, where you pass a labelling function rather than applying formatting to a `gt` table.. The `scales` package provides `scales::percent()` for this purpose, but that function defaults to English conventions.. `prosenten` changes the defaults so that:
+
+- `scale = 100` multiplies raw proportions (0–1) by 100 before displaying them..
+- `suffix = " %"` adds a space before the percent sign..
+- `decimal.mark` and `big.mark` are left as `NULL`, which lets `scales::number()` pick them up from the locale if set, or fall back to its own defaults.. If you want to force a comma as the decimal separator you can pass `decimal.mark = ","` explicitly..
+
+```{r, eval=FALSE}
+# Use in a ggplot2 axis:
+ggplot(data, aes(x = group, y = rate)) +
+  geom_col() +
+  scale_y_continuous(labels = prosenten)
+```
+
+## Why wrapper functions..
+
+Wrapper functions like these are a simple and low-cost way to enforce a house style.. Instead of remembering to add `locale = "no"` and `incl_space = TRUE` every time, you write the correct defaults once and reuse the wrapper everywhere.. The `...` idiom ensures you do not lose any flexibility: all arguments of the original function remain available, and the wrappers stay short enough to read at a glance..
