@@ -12,7 +12,22 @@
       <link>https://www.oyvindsolheim.com</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Norwegian Punctuation Wrappers for gt, scales, and ggplot2</title>
+      <dc:creator>Øyvind Bugge Solheim</dc:creator>
+      <dc:creator>Claude Code (Ghost Writer)</dc:creator>
+      <link>https://www.oyvindsolheim.com/library/Norwegian punctuation functions</link>
+      <description>This post explains a set of small wrapper functions that make gt and scales output follow Norwegian punctuation rules, using commas as decimal separators and spaces before percent signs..</description>
+      <category>locale</category>
+      <category>Norwegian</category>
+      <category>gt</category>
+      <category>scales</category>
+      <category>ggplot2</category>
+      <category>R programming</category>
+      <guid>https://www.oyvindsolheim.com/library/Norwegian punctuation functions</guid>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Evaluating Model Performance: Recall, Precision, F1 Score, and Kappa using Tidyverse</title>
       <dc:creator>Øyvind Bugge Solheim</dc:creator>
@@ -66,7 +81,7 @@
       <category>internationalization</category>
       <category>R programming</category>
       <guid>https://www.oyvindsolheim.com/library/Norwegian characters</guid>
-      <pubDate>Thu, 19 Dec 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

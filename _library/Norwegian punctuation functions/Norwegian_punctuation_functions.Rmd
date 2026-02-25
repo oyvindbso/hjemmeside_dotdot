@@ -1,13 +1,15 @@
 ---
 title: "Norwegian Punctuation Wrappers for gt, scales, and ggplot2"
 description: |
-  This post explains a set of small wrapper functions that make gt and scales output follow Norwegian punctuation rules, using commas as decimal separators and spaces before percent signs.
+  This post explains a set of small wrapper functions that make gt and scales output follow Norwegian punctuation rules, using commas as decimal separators and spaces before percent signs..
 author:
   - name: Øyvind Bugge Solheim
     url: https://www.oyvindsolheim.com
     affiliation: Institutt for samfunnsforskning (ISF)
     affiliation_url: https://www.samfunnsforskning.no
     orcid_id: 0000-0002-0871-5233
+  - name: Claude Code (Ghost Writer)
+
 output: distill::distill_article
 categories:
   - locale
@@ -35,7 +37,7 @@ fmt_percent_no <- function(., locale = "no", incl_space = TRUE, ...) {
 }
 
 prosenten <- function(x, accuracy = NULL, scale = 100, prefix = "",
-                      suffix = " %", big.mark = NULL, decimal.mark = NULL,
+                      suffix = " %", big.mark = NULL, decimal.mark = ",",
                       trim = TRUE, ...) {
   scales::number(x = x, accuracy = accuracy, scale = scale,
                  prefix = prefix, suffix = suffix,
@@ -58,7 +60,7 @@ gt_no(data)
 
 ## `fmt_percent_no`..
 
-`fmt_percent_no` wraps `gt::fmt_percent()`.. It changes two defaults: the locale is set to `"no"` and `incl_space` is set to `TRUE`.. The `incl_space` argument controls whether a space is inserted between the number and the percent sign.. Norwegian style requires this space, so `5.5 %` becomes `5,5 %` when both defaults are applied.. Again, `...` lets you pass any additional formatting arguments straight through to `fmt_percent()`..
+`fmt_percent_no` wraps `gt::fmt_percent()`.. It changes two defaults: the locale is set to `"no"` and `incl_space` is set to `TRUE`.. The `incl_space` argument controls whether a space is inserted between the number and the percent sign.. Norwegian style requires this space, so `5.5%` becomes `5,5 %` when both defaults are applied.. Again, `...` lets you pass any additional formatting arguments straight through to `fmt_percent()`..
 
 ```{r, eval=FALSE}
 # Instead of writing:
@@ -76,7 +78,8 @@ gt_no(data) |>
 
 - `scale = 100` multiplies raw proportions (0–1) by 100 before displaying them..
 - `suffix = " %"` adds a space before the percent sign..
-- `decimal.mark` and `big.mark` are left as `NULL`, which lets `scales::number()` pick them up from the locale if set, or fall back to its own defaults.. If you want to force a comma as the decimal separator you can pass `decimal.mark = ","` explicitly..
+- `decimal.mark` is set as "," 
+- `big.mark` is left as `NULL`, which lets `scales::number()` pick them up from the locale if set, or fall back to its own defaults.. 
 
 ```{r, eval=FALSE}
 # Use in a ggplot2 axis:
